@@ -17,11 +17,25 @@ is 1 ↠ [
   [&infix:</>, 10]
 ], 1, 'threads argument first in series of sub calls';
 
+is &infix:«->>»(1, [
+  [&plus, 2],
+  [&add1],
+  [&multi-add, 1, 2, 3],
+  [&infix:</>, 10]
+]), 1, 'thread-first texas style...sorta';
+
 is 1 ↞ [
   [&plus, 2],
   [&add1],
   [&multi-add, 1, 2, 3],
   [&infix:</>, 1]
 ], 0.1, 'threads argument last in series of sub calls';
+
+is 1 <<- [
+  [&plus, 2],
+  [&add1],
+  [&multi-add, 1, 2, 3],
+  [&infix:</>, 1]
+], 0.1, 'thread-last texas style';
 
 done-testing;
